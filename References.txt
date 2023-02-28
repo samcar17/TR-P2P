@@ -1,0 +1,46 @@
+References
+
+
+MIDI CHART
+http://aaron.headwai.com/ra/MIDI/MIDI%20Message%20Table%201.pdf
+
+
+MIDI MSG TO SERVER contains: 
+data.type: On/Off/CC assignment, string	//ON, OFF, CC
+data.byte1: channel						//i.e. 1, 2, 3, 4, 5, 6 etc...			
+data.byte2: note/cc number				//1 - 127
+data.byte3: velocity/cc val				// 1 - 127
+
+
+WHAT HAPPENS IF THE MASTER DISCONNECTS? 
+Do we choose a new master? DONE
+
+HOW DO WE HANDLE SELECTING MIDI DEVICES?
+Set them all up and let the user choose which to use? <- Inefficient
+Might be able to close port and open new port? <- DONE!! 
+
+SEND PKG ON: 
+Click {add to state array, draw if on screen}
+Delete {delete state array, re-draw pad, initialize stateArray}
+Backspace {shortenStateArray, re-draw pad, re-draw seq}
+Any extension (down arrow beyond padDivisionHighScore){extend state array, draw if on screen}
+-------------------------------------------------------------------------------------------------------------------
+NEXT BIG QUESTION: HOW DO WE HANDLE NEW CONNECTIONS IN THE MIDDLE OF JAM?
+1) onConnection, server sends an update request to a random client
+2) client replies with a pkg msg containing all the data the connecting client needs to get it up to date
+3) connecting client then runs a fullUpdate function that covers all of the new info and alters it to match the others
+4) finally, it recieves a CLK pkg from the other clients to get it on the same step
+
+	{{{info for this!!}}}
+	type: 'fullUpdate'
+	stateArray
+	padDivision
+	padDivisionHighScore
+	clk
+	we need a 'newDivision' variable if extending
+	and a 'numberOfBackspaces' variable if shortening
+	
+	
+ADD: STOP/START	
+	
+BUG: Adding notes to sequence from non-master arrays gives buggy midi output. Graphics look fine though. Could be to do with noteOffs and how we're not sending the previous step's array? 
