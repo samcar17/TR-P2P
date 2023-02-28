@@ -1,6 +1,6 @@
 # TR-P2P
 
-Archival repo. Node server and p5.js client for a networked MIDI sequencer. Made for a VUW Summer Scholarship in 2018/2019. 
+Archival repo. Node.js server and p5.js client for a networked MIDI sequencer. Made for a VUW Summer Scholarship in 2018/2019. 
 
 This was my first web project, and it worked remarkably well, with few timing issues. The concept was to make a piano roll-style sequencer (like the Synthstrom Deluge) that could be edited/played communally, similar to a Google doc. It was demonstrated at Te Wā Heke Festival in 2019, where it was used to control a combination of synths and acoustic drums played by robots. It was also stress tested by many, many kids that day and didn't break or go out of time(!). Despite this, it was a project with a time limit, so I'm sure there are some bugs in there somewhere. It's probably best to use the code for reference only. 
 
