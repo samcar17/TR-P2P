@@ -144,7 +144,25 @@ function sendPkg(type){
 }
 }		
 `
- .
+
+
+## Server Development "Roadmap" 
+
+At the time I stopped working on this project, this was the roadmap (I've removed the relevant dates). If anyone ever wanted to pick this up in the future, these are where 2019 me saw potential for improvement.     
+
+### List of tasks *needed* to improve server: 
+- Time-domain buffer to improve possibilities of timing, jitter and drift
+- Sending OSC to ChucK to then send MIDI. Improves any chance of timing errors and can ‘quantize’ to an accurate clock/buffer
+- Running the server’s clock from ChucK (sending OSC back to Node), which will provide a steadier internal clock with less drift 
+- Ability to change server input ports from client
+
+### List of tasks *wanted* to improve server: 
+- Accept MIDI clock from ableton
+- Accept MIDI clock ‘streaming’ through client
+- Accept MIDI notes/CCs from server and ‘stream’ to client
+- Reducing the amount of messages sent between the server and the client (potentially packaging messages in JSON format or similar), especially during the ‘FULLUPDATE’ routine. 
+- Looking into ways to make the server logic more robust/supporting a larger number of connections/error checking
+
 
 
 
